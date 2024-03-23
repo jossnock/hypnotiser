@@ -15,11 +15,10 @@ i = 0
 circle_centre_x = SCREEN_WIDTH // 2
 circle_centre_y = SCREEN_HEIGHT // 2
 if SCREEN_WIDTH > SCREEN_HEIGHT:
-    INITIAL_CIRCLE_RADIUS = SCREEN_WIDTH // 2
+    INITIAL_CIRCLE_RADIUS = 3 * SCREEN_WIDTH // 4
 else: 
-    INITIAL_CIRCLE_RADIUS = SCREEN_HEIGHT // 2
-
-circle_width = 8 # 0 for a filled circle
+    INITIAL_CIRCLE_RADIUS = 3 * SCREEN_HEIGHT // 4
+circle_width = 16
 
 # circle colours:
 circle_colour = (255, 255, 255)
@@ -37,8 +36,8 @@ while running:
     SCREEN.fill(background_colour)
 
     # render the circle:
-    for j in range(i, (2 * SCREEN_WIDTH // circle_width), circle_width):
-        if INITIAL_CIRCLE_RADIUS - (2 * j) > 0:
+    for j in range(i, (INITIAL_CIRCLE_RADIUS // circle_width), circle_width): # FIX
+        if INITIAL_CIRCLE_RADIUS - ((2 * j) + 1) > 0:
             pygame.draw.circle(SCREEN, "White", (circle_centre_x,circle_centre_y), INITIAL_CIRCLE_RADIUS - (2 * j), circle_width)
             pygame.draw.circle(SCREEN, "Black", (circle_centre_x,circle_centre_y), INITIAL_CIRCLE_RADIUS - ((2* j) + 1), circle_width)
 
